@@ -5,6 +5,82 @@
   --foreground: #171717;
 }
 
+
+body {
+  font-family: "Anek Latin", Arial, sans-serif;
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 100;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-Thin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 200;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-ExtraLight.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-Light.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 600;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-Bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Anek Latin";
+  font-weight: 800;
+  font-style: normal;
+  src: url("/fonts/anek-latin/AnekLatin-ExtraBold.woff2") format("woff2");
+}
+
+
+@theme {
+  --breakpoint-large: 1440px;
+
+  --text-sectionheading: 60px;
+  --text-heading: 40px;
+  --text-section-heading-sm: 44px;
+  --text-heading-sm: 32px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
 @layer utilities {
   @keyframes custom-bounce {
     0% {
