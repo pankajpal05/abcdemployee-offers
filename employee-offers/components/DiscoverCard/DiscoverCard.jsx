@@ -1,9 +1,9 @@
 const Discover = ({title,subTitle,description,buttonTitle,imageAlignment}) => {
   return (
-    <div className="grid grid-cols-2 items-center justify-between">
+    <div className="grid grid-cols-2  place-items-center ">
       <div className={`${imageAlignment == "left" ? "order-1" : ""}`}>
         <div>
-          <h1 className="text-left mb-4 text-4xl text-black font-medium">
+          <h1 className="text-left mb-4 text-5xl text-[#1f1f1f] w-[90%] font-medium">
            {title}
           </h1>
           <p className="text-md text-[#333333cc] w-[70%]">
@@ -23,7 +23,7 @@ const Discover = ({title,subTitle,description,buttonTitle,imageAlignment}) => {
           </div>
         </div>
       </div>
-      <div className="animate-custom-bounce">
+      <div className="animate-custom-bounce place-items-center">
         <img src="/images/abg_discover_download_img.png" alt="img3" />
       </div>
     </div>
