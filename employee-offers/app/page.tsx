@@ -1,5 +1,7 @@
+import CardGrid from "@/components/CardGrid/CardGrid";
 import DiscoverCard from "@/components/DiscoverCard/DiscoverCard"
 import FooterNote from "@/components/FooterNote/FooterNote";
+import Form from "@/components/FormComponents/Form";
 import Header from "@/components/Header/Header";
 import MaxWidthContainer from "@/components/MaxWidthContainer/MaxWidthContainer";
 
@@ -9,6 +11,14 @@ export default function Home() {
     <Header/>
    <div className="p-[50px]">
     <MaxWidthContainer> 
+        <div className="flex relative">
+      <div className="w-3/5">
+  <CardGrid />
+  </div>
+  <div className="w-2/5 sticky self-start">
+  <Form/>
+  </div>
+  </div>
      <DiscoverCard
         imageAlignment="right"
         title={"Discover Convenience Like Never Before"}
