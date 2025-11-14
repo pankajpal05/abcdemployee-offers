@@ -48,12 +48,12 @@ const Header = () => {
               showTop ? " opacity-100 min-h-[30px] items-center " : "opacity-0 max-h-0 overflow-hidden"
             }`}
           >
-            <p className="text-[#2A2E34] text-sm">
+            <p className="max-md:hidden text-[#2A2E34] text-sm">
               Aditya Birla Capital Digital Limited
             </p>
             <a
               href="tel:08035092882"
-              className="text-[#CA1F34] text-center text-sm flex items-center gap-2.5 pr-10"
+              className="text-[#CA1F34] text-center text-sm flex items-center gap-2.5 pr-2.5 lg:pr-10"
             >
               <img src="/images/phone-call.png" alt="Phone Icon" />
               080 350 92882

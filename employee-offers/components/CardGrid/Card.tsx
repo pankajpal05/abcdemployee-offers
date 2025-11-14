@@ -1,19 +1,30 @@
-import React from "react";
+import React, { ReactNode } from "react";
 interface cardProps {
   title: string;
-  subTitle: string;
-  bgImage: string;
+  subTitle: ReactNode;
+  bgDesktopImage: string;
+  bgMobileImage: string;
   width?: string | number;
 }
-const Card = ({ title, subTitle, bgImage, width }: cardProps) => {
+const Card = ({ title, subTitle, bgDesktopImage, bgMobileImage, width }: cardProps) => {
   return (
     <div className="relative w-full h-full">
-      <img src={bgImage} className=" rounded-3xl w-full h-full object-fill" />
-      <div className="absolute top-0 left-0 w-full h-full p-[30px]">
-        <h4 className="text-[26px] leading-[30px] text-[#1f1f1f] mb-4">
+        {/* Mobile Image */}
+      <img
+        src={bgMobileImage}
+        className="rounded-3xl w-full h-full object-fill md:hidden"
+      />
+
+      {/* Desktop Image */}
+      <img
+        src={bgDesktopImage}
+        className="rounded-3xl w-full h-full object-fill hidden md:block"
+      />
+      <div className="absolute top-0 left-0 w-full h-full p-5 xl:p-[30px]">
+        <h4 className="text-base lg:text-base xl:text-[26px] font-semibold leading-4.5 xl:leading-7 text-[#1f1f1f] mb-2.5 md:mb-4">
           {title}
         </h4>
-        <p className={`text-[#333333cc] text-4`} style={{ width: width }}>
+        <p className={`text-[#333333cc] text-xs md:text-sm leading-4.5 xl:leading-5.5 xl:text-base`} style={{ width: width }}>
           {subTitle}
         </p>
       </div>
