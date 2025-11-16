@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="py-[50px]">
+      <div className="pt-[50px]">
         <MaxWidthContainer>
           <div className="flex flex-col lg:flex-row lg:gap-5 relative">
             <div className="w-full lg:w-[60.5%] flex flex-col">
@@ -34,7 +34,7 @@ export default function Home() {
             </div>
           </div>
         </MaxWidthContainer>
-        <MaxWidthContainer extraClasses="max-md:py-0 max-md:pt-7 ">
+        <MaxWidthContainer extraClasses="max-md:py-0 max-md:pt-7 max-xl:!py-[60px] ">
           <DiscoverCard
             imageAlignment="right"
             title={"Discover Convenience Like Never Before"}

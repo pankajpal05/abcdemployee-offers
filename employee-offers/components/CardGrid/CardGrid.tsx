@@ -2,7 +2,7 @@ import Card from "./Card";
 
 const cardGrid = () => {
   return (
-    <div className="flex flex-col mt-[60px]">
+    <div className="flex flex-col max-lg:mt-[60px] mt-[100px]">
       <h3 className="text-[#1f1f1fcc] text-xl leading-[22px] font-semibold  mb-5">
         The Products We Offer
       </h3>
@@ -27,7 +27,7 @@ const cardGrid = () => {
               }
               bgDesktopImage="/images/ey-box-home-loan.png"
               bgMobileImage="/images/ey-box-home-loan-mob.png"
-              width="70%"
+              width="w-[70%] max-md:w-full"
             />
           </div>
           <div className=" ">
@@ -41,7 +41,7 @@ const cardGrid = () => {
               }
               bgDesktopImage="/images/ey-box-health-insurance.png"
               bgMobileImage="/images/ey-box-health-insurance-mob.png"
-              width="70%"
+              width="w-[70%] max-md:w-full"
             />
           </div>
         </div>
@@ -126,7 +126,7 @@ const cardGrid = () => {
             }
             bgDesktopImage="/images/abg-health-insu-card.png"
             bgMobileImage="/images/abg-helth-mob.png"
-            width="70%"
+            
           />
         </div>
         <div className="col-span-3 ">
@@ -148,7 +148,7 @@ const cardGrid = () => {
             }
             bgDesktopImage="/images/abg-motor-insu.png"
             bgMobileImage="/images/abg-motor-insu-mob.png"
-            width="70%"
+            width="w-[70%] max-md:w-full"
           />
         </div>
       </div>
