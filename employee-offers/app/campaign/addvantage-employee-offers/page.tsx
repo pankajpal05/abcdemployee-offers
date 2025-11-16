@@ -1,5 +1,3 @@
-import Accordian from "@/components/Accordion/Accordion";
-import AccordianBody from "@/components/Accordion/AccordionBody";
 import CardGrid from "@/components/CardGrid/CardGrid";
 import AdvantageBanner from "@/components/DiscoverCard/Banner/AdvantageBanner";
 import DiscoverCard from "@/components/DiscoverCard/DiscoverCard";
@@ -7,6 +5,8 @@ import FooterNote from "@/components/FooterNote/FooterNote";
 import Form from "@/components/EmployeeForm/EmployeeForm";
 import Header from "@/components/Header/Header";
 import MaxWidthContainer from "@/components/MaxWidthContainer/MaxWidthContainer";
+import AccordionBody from "@/components/Accordion/AccordionBody";
+import Accordion from "@/components/Accordion/Accordion";
 
 export default function Home() {
   return (
@@ -14,12 +14,12 @@ export default function Home() {
       <Header />
       <div className="py-[50px]">
         <MaxWidthContainer>
-          <div className="flex flex-col md:flex-row relative">
-            <div className="w-full md:w-[60.5%]">
+          <div className="flex flex-col lg:flex-row relative">
+            <div className="w-full lg:w-[60.5%]">
               <AdvantageBanner />
               <CardGrid />
             </div>
-            <div className="w-full md:w-2/5 sticky top-2 self-start">
+            <div className="w-full md:w-full lg:w-2/5 sticky top-2 self-start  lg:block">
               <Form />
             </div>
           </div>
@@ -36,15 +36,15 @@ export default function Home() {
           />
         </MaxWidthContainer>
       </div>
-      <Accordian AccordionTitle={"Disclaimer"}>
-        <AccordianBody
+      <Accordion AccordionTitle={"Disclaimer"}>
+        <AccordionBody
           title="ABCD"
           subTitle={
             "Strictly for Internal Circulation only. Any kind of further circulation is prohibited."
           }
           description={`ADITYA BIRLA CAPITAL DIGITAL LIMITED (ABCDL") |CIN: U64990MH2023PLC399485 | IRDAI Reg. No. CA0871 | AMFI Reg. No. ARN-270149 |Registered Address: 18th Floor, One World Center, Tower 1, Jupiter Mills Compound,841 Senapati Baput Marg, Elphinstone Road Delisle Road, Mumbai Maharashtra 400013, Participation by the ABCD'S clients in the insurance products is purely on a voluntary basis.The Trade Logo "Aditya Birla Capital" Displayed Above Is Owned By ADITYA BIRLA MANAGEMENT CORPORATION PRIVATE LIMITED (Trademark Owner) And Used By ADITYA BIRLA CAPITAL DIGITAL LIMITED (ABCDL) under the License. ABCDL does not underwrite the risk or act as an insurer. Please read the policy terms and conditions carefully before concluding the sale. Beware of spurious/fraud phone calls!! (IRDAI is not involved in activities like selling insurance policies, announcing bonus or investment of premiums. Public receiving such phone calls are requested to lodge a police complaint.) ABCDL is only a lending Service provider and not lender. Mutual Fund investments are subject to market risk, read all scheme related documents carefully. T&C Apply.`}
         />
-        <AccordianBody
+        <AccordionBody
           title="ABC"
           description={
             <>
@@ -56,7 +56,7 @@ export default function Home() {
                 className="text-[#4d4d4f] underline"
               >
                 care.finance@adityabirlacapital.com
-              </a>{" "}
+              </a>
               Toll-free no.:{" "}
               <a href="tel:1800-270-7000" className="text-[#4d4d4f]">
                 1800-270-7000
@@ -76,16 +76,16 @@ export default function Home() {
           }
         />
 
-        <AccordianBody
+        <AccordionBody
           title="ABSLI"
           subTitle="Terms and conditions of the website are applicable."
           description="The interest rate constitute the rack rate for all customers. Actual interest rate for any customer and will be as communicated at the time of loan sanction and disbursal, it will be subject to changes from time to time and is at sole discretion of ABHFL.Loans originated, booked and serviced by Aditya Birla Housing Finance Limited, subject to credit appraisal in sole discretion of Aditya Birla Housing Finance Limited and terms and conditions as agreed under individual loan agreement."
         />
-        <AccordianBody
+        <AccordionBody
           title="Aditya Birla Sun Life Liquid Fund"
           imageLink="/images/abg-life-liquid-fund.png"
         />
-      </Accordian>
+      </Accordion>
       <FooterNote />
     </>
   );

@@ -1,17 +1,11 @@
 "use client"
-import React, { useState } from 'react';
-import { LayoutGrid, User, Mail, Building, MapPin, Smartphone, ChevronDown, Check } from 'lucide-react';
-import FormField from './FormField';
-import CheckboxItem from './CheckBoxItem';
+import  { useState } from 'react';
+import { LayoutGrid, User, Mail, Building, MapPin, Smartphone, } from 'lucide-react';
+import FormField from '../FormField/FormField';
+import CheckboxItem from '../CheckBoxItem/CheckBoxItem';
+import { ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS, ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS } from '@/constant/constant';
 
-
-
-
-
-
-
-
-const Form = () => {
+const EmployeeForm = () => {
   const [formData, setFormData] = useState({
     productType: '',
     fullName: '',
@@ -34,48 +28,31 @@ const Form = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault();
-    // In a real application, you would handle the API call here
     console.log("Form Submitted:", formData);
-    // Add logic to display a success/error message instead of console.log
   };
 
-  const productOptions = [
-    { label: "Software License", value: "software" },
-    { label: "Hardware Upgrade", value: "hardware" },
-    { label: "Service Contract", value: "service" },
-  ];
-
-  const companyOptions = [
-    { label: "Google", value: "google" },
-    { label: "Microsoft", value: "microsoft" },
-    { label: "Apple", value: "apple" },
-  ];
-
-  const isFormValid = formData.agreeTerms && formData.fullName.length > 0; // Simple validation example
+  const isFormValid = formData.agreeTerms && formData.fullName.length > 0; 
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 font-sans">
-      <div className="w-full text-white rounded-3xl p-6 sm:p-8 shadow-2xl"
+    <div className="min-h-screen flex items-center justify-center lg:p-6 font-sans">
+      <div className="w-full lg:w-[431px] text-white rounded-2xl p-6 lg:p-8"
         style={{
           background: 'radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)',
-          width: '431px', // Note: Fixed height might cause content overflow on smaller screens.
+          width: '431px', 
         }}
       >
-
-        {/* Header */}
-        <h1 className="text-[28px] pr-10 font-extrabold text-white mb-2.5 leading-tight">
+        <h1 className="text-[25px] xl:text-[28px] lg:pr-10 font-medium text-white mb-2.5 leading-tight">
           Dear Employee, Get Started To Unlock The Best Offers!
         </h1>
-
         <form onSubmit={handleSubmit}>
-          {/* Form Fields */}
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-4'>
           <FormField
             icon={LayoutGrid}
             placeholder="Type Of Product"
             isSelect={true}
             value={formData.productType}
             onChange={(e) => handleInputChange({ target: { name: 'productType', value: e.target.value } })}
-            options={productOptions}
+            options={ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS}
           />
 
           <FormField
@@ -100,7 +77,7 @@ const Form = () => {
             isSelect={true}
             value={formData.companyName}
             onChange={(e) => handleInputChange({ target: { name: 'companyName', value: e.target.value } })}
-            options={companyOptions}
+            options={ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS}
           />
 
           <FormField
@@ -110,7 +87,6 @@ const Form = () => {
             value={formData.pincode}
             onChange={(e) => handleInputChange({ target: { name: 'pincode', value: e.target.value } })}
           />
-
           <FormField
             icon={Smartphone}
             placeholder="Enter Mobile Number"
@@ -119,40 +95,38 @@ const Form = () => {
             value={formData.mobileNumber}
             onChange={(e) => handleInputChange({ target: { name: 'mobileNumber', value: e.target.value } })}
           />
-
-          {/* Checkboxes/Agreements */}
-          <div className="mt-2 mb-2.5">
+</div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 mt-2 mb-2.5">
             <CheckboxItem
               label={
-                <>
+                <p className='text-xs'>
                   I agree to the <a href="#" className="font-bold text-white underline">Terms and Conditions.</a>
-                </>
+                </p>
               }
               isChecked={formData.agreeTerms}
               onToggle={() => setFormData(prev => ({ ...prev, agreeTerms: !prev.agreeTerms }))}
             />
             <CheckboxItem
               label={
-                <>
+                <p className='text-xs'>
                   Get updates on <span className="font-bold text-white underline">WhatsApp.</span>
-                </>
+                </p>
               }
               isChecked={formData.getUpdates}
               onToggle={() => setFormData(prev => ({ ...prev, getUpdates: !prev.getUpdates }))}
             />
           </div>
 
-          {/* Validation/Instruction Text */}
-          <p className="text-[#ff919d] text-sm mb-6">
+          {/* <p className="text-[#ff919d] text-sm mb-6">
             Please Enter Your Name.
-          </p>
-
-          {/* GET OTP Button */}
+          </p> */}
+        
           <button
             type="submit"
             disabled={!isFormValid}
             className={`
-              w-full py-3.5 text-lg font-bold rounded-full shadow-lg transition duration-200
+              w-full py-3.5 text-xs font-bold rounded-full shadow-lg transition duration-200
               ${isFormValid
                 ? 'bg-[#c6c5c9]  text-[#ca1f34]'
                 : 'bg-[#c6c5c9] text-[#ca1f34]'
@@ -167,5 +141,5 @@ const Form = () => {
   );
 }
 
-export default Form
+export default EmployeeForm
  
