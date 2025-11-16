@@ -10,6 +10,7 @@ import { ChevronDown } from "lucide-react";
   isSelect?: boolean,
   prefix?: string | null
 }) => {
+  
   const commonClasses = "w-full text-white bg-[#ffffff1a] border border-[#e8e8e83d] focus:border-white focus:ring-0 rounded-xl px-4 py-3 shadow-inner placeholder-[#f2f2f2] focus:outline-none transition duration-150 font-normal text-sm";
 
   return (
