@@ -4,13 +4,6 @@ import { LayoutGrid, User, Mail, Building, MapPin, Smartphone, ChevronDown, Chec
 import FormField from './FormField';
 import CheckboxItem from './CheckBoxItem';
 
-
-
-
-
-
-
-
 const Form = () => {
   const [formData, setFormData] = useState({
     productType: '',
@@ -51,91 +44,87 @@ const Form = () => {
     { label: "Apple", value: "apple" },
   ];
 
-  const isFormValid = formData.agreeTerms && formData.fullName.length > 0; // Simple validation example
+  const isFormValid = formData.agreeTerms && formData.fullName.length > 0; 
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 font-sans">
-      <div className="w-full text-white rounded-3xl p-6 sm:p-8 shadow-2xl"
+    <div className="min-h-screen flex items-center justify-center lg:p-6 font-sans">
+      <div className="w-full lg:w-[431px] text-white rounded-2xl p-[25px] lg:p-8"
         style={{
           background: 'radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)',
-          width: '431px', // Note: Fixed height might cause content overflow on smaller screens.
         }}
       >
 
         {/* Header */}
-        <h1 className="text-[28px] pr-10 font-extrabold text-white mb-2.5 leading-tight">
+        <h1 className="text-[25px] xl:text-[28px] lg:pr-10 font-medium text-white mb-2.5 leading-tight">
           Dear Employee, Get Started To Unlock The Best Offers!
         </h1>
 
         <form onSubmit={handleSubmit}>
           {/* Form Fields */}
-          <FormField
-            icon={LayoutGrid}
-            placeholder="Type Of Product"
-            isSelect={true}
-            value={formData.productType}
-            onChange={(e) => handleInputChange({ target: { name: 'productType', value: e.target.value } })}
-            options={productOptions}
-          />
-
-          <FormField
-            icon={User}
-            placeholder="Enter Full Name"
-            type="text"
-            value={formData.fullName}
-            onChange={(e) => handleInputChange({ target: { name: 'fullName', value: e.target.value } })}
-          />
-
-          <FormField
-            icon={Mail}
-            placeholder="Enter Email ID"
-            type="email"
-            value={formData.emailId}
-            onChange={(e) => handleInputChange({ target: { name: 'emailId', value: e.target.value } })}
-          />
-
-          <FormField
-            icon={Building}
-            placeholder="Company Name"
-            isSelect={true}
-            value={formData.companyName}
-            onChange={(e) => handleInputChange({ target: { name: 'companyName', value: e.target.value } })}
-            options={companyOptions}
-          />
-
-          <FormField
-            icon={MapPin}
-            placeholder="Enter Your Pincode"
-            type="text"
-            value={formData.pincode}
-            onChange={(e) => handleInputChange({ target: { name: 'pincode', value: e.target.value } })}
-          />
-
-          <FormField
-            icon={Smartphone}
-            placeholder="Enter Mobile Number"
-            type="tel"
-            prefix="+91"
-            value={formData.mobileNumber}
-            onChange={(e) => handleInputChange({ target: { name: 'mobileNumber', value: e.target.value } })}
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-x-4">
+            <FormField
+              icon={LayoutGrid}
+              placeholder="Type Of Product"
+              isSelect={true}
+              value={formData.productType}
+              onChange={(e) => handleInputChange({ target: { name: 'productType', value: e.target.value } })}
+              options={productOptions}
+            />
+            <FormField
+              icon={User}
+              placeholder="Enter Full Name"
+              type="text"
+              value={formData.fullName}
+              onChange={(e) => handleInputChange({ target: { name: 'fullName', value: e.target.value } })}
+            />
+            <FormField
+              icon={Mail}
+              placeholder="Enter Email ID"
+              type="email"
+              value={formData.emailId}
+              onChange={(e) => handleInputChange({ target: { name: 'emailId', value: e.target.value } })}
+            />
+            <FormField
+              icon={Building}
+              placeholder="Company Name"
+              isSelect={true}
+              value={formData.companyName}
+              onChange={(e) => handleInputChange({ target: { name: 'companyName', value: e.target.value } })}
+              options={companyOptions}
+            />
+            <FormField
+              icon={MapPin}
+              placeholder="Enter Your Pincode"
+              type="text"
+              value={formData.pincode}
+              onChange={(e) => handleInputChange({ target: { name: 'pincode', value: e.target.value } })}
+            />
+            <FormField
+              icon={Smartphone}
+              placeholder="Enter Mobile Number"
+              type="tel"
+              prefix="+91"
+              value={formData.mobileNumber}
+              onChange={(e) => handleInputChange({ target: { name: 'mobileNumber', value: e.target.value } })}
+            />
+          </div>
 
           {/* Checkboxes/Agreements */}
-          <div className="mt-2 mb-2.5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 mt-2 mb-2.5">
             <CheckboxItem
               label={
-                <>
+                <p className="text-xs">
                   I agree to the <a href="#" className="font-bold text-white underline">Terms and Conditions.</a>
-                </>
+                </p>
               }
               isChecked={formData.agreeTerms}
               onToggle={() => setFormData(prev => ({ ...prev, agreeTerms: !prev.agreeTerms }))}
             />
             <CheckboxItem
               label={
-                <>
+                <p className="text-xs">
                   Get updates on <span className="font-bold text-white underline">WhatsApp.</span>
-                </>
+                </p>
               }
               isChecked={formData.getUpdates}
               onToggle={() => setFormData(prev => ({ ...prev, getUpdates: !prev.getUpdates }))}
@@ -152,7 +141,7 @@ const Form = () => {
             type="submit"
             disabled={!isFormValid}
             className={`
-              w-full py-3.5 text-lg font-bold rounded-full shadow-lg transition duration-200
+              w-full py-3.5 text-xs font-bold rounded-full shadow-lg transition duration-200
               ${isFormValid
                 ? 'bg-[#c6c5c9]  text-[#ca1f34]'
                 : 'bg-[#c6c5c9] text-[#ca1f34]'

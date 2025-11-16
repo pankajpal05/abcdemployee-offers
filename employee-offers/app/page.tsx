@@ -14,12 +14,17 @@ export default function Home() {
       <Header />
       <div className="py-[50px]">
         <MaxWidthContainer>
-          <div className="flex flex-col md:flex-row relative">
-            <div className="w-full md:w-[60.5%]">
+          <div className="flex flex-col lg:flex-row relative">
+            <div className="w-full lg:w-[60.5%]">
               <AdvantageBanner />
+
+               <div className="lg:hidden mt-12">
+                <Form />
+               </div>
+
               <CardGrid />
             </div>
-            <div className="w-full md:w-2/5 sticky top-2 self-start">
+            <div className="w-full md:w-full lg:w-2/5 sticky top-2 self-start hidden lg:block">
               <Form />
             </div>
           </div>

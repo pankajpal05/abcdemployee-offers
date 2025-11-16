@@ -3,7 +3,7 @@ import Card from "./Card";
 const cardGrid = () => {
   return (
     <div className="flex flex-col mt-[60px]">
-      <h3 className="text-[#1f1f1fcc] text-xl leading-[22px] font-medium mb-5">
+      <h3 className="text-[#1f1f1fcc] text-xl leading-[22px] font-semibold mb-5">
         The Products We Offer
       </h3>
       <div className="flex flex-col gap-4 lg:grid lg:grid-cols-6 lg:grid-row-5">
@@ -21,8 +21,8 @@ const cardGrid = () => {
               title={"Housing Loan"}
               subTitle={
                 <>
-                  Interest rates starting at <strong>7.85% p.a.</strong> and
-                  processing fee of <strong>₹ 1.</strong>
+                  Interest rates starting at <strong className={"text-black font-semibold"}>7.85% p.a.</strong> and
+                  processing fee of <strong className={"text-black font-semibold"}>₹ 1.</strong>
                 </>
               }
               bgDesktopImage="/images/ey-box-home-loan.png"
@@ -35,7 +35,7 @@ const cardGrid = () => {
               title={"Health Insurance"}
               subTitle={
                 <>
-                  <strong>19%</strong>discount on collective payment of 3 years
+                  <strong className={"text-black font-semibold"}>19%</strong>discount on collective payment of 3 years
                   premium.
                 </>
               }
@@ -51,7 +51,7 @@ const cardGrid = () => {
             subTitle={
               <>
                 Get a Loan against your Mutual Funds starting at{" "}
-                <strong>9.75% p.a.</strong>
+                <strong className={"text-black font-semibold"}>9.75% p.a.</strong>
               </>
             }
             bgDesktopImage="/images/ey-box-demat.png"
@@ -64,7 +64,7 @@ const cardGrid = () => {
             subTitle={
               <>
                 Get Gold Loan at attractive interest rates starting at
-                <strong>9.5% p.a.</strong>
+                <strong className={"text-black font-semibold"}>9.5% p.a.</strong>
               </>
             }
             bgDesktopImage="/images/gold-loan.png"
@@ -76,10 +76,10 @@ const cardGrid = () => {
             title={"Mutual Fund"}
             subTitle={
               <>
-                "Think long-term investments with Aditya Birla Sun Life Mutual
+              Think long-term investments with Aditya Birla Sun Life Mutual
                 Fund to build a better financial life.
-              </>
-            }
+                </>
+              }
             bgDesktopImage="/images/ey-box-mutual-fundd.png"
             bgMobileImage="/images/ey-box-mutual-fund-mob.png"
           />
@@ -89,7 +89,7 @@ const cardGrid = () => {
             title={"Personal Loan"}
             subTitle={
               <>
-                Starting from <strong>10.50% p.a.</strong> at Zero processing
+                Starting from <strong className={"text-black font-semibold"}>10.50% p.a.</strong> at Zero processing
                 fee.
               </>
             }
@@ -102,10 +102,10 @@ const cardGrid = () => {
             title={"Forex"}
             subTitle={
               <>
-                "Seamless Forex services for
-                <strong>transfers, travel, and currency exchange</strong> "
-              </>
-            }
+              Seamless Forex services for
+                <strong className={"text-black font-semibold"}> transfers, travel, and currency exchange</strong>
+                </>
+                } 
             bgDesktopImage="/images/forex.png"
             bgMobileImage="/images/forex.png"
           />
@@ -115,13 +115,13 @@ const cardGrid = () => {
             title={"Health Insurance - Super Top Up"}
             subTitle={
               <>
-                Get <strong>₹10</strong> Lakhs Sum Insured with:<br/>
-                <strong>₹5</strong> Lakhs Deductible starting{" "}
-                <strong>₹1612</strong>/year<br/>
-                <strong>₹7</strong> Lakhs Deductible starting
-                <strong> ₹809</strong>/year<br/>
-                <strong>₹10 </strong>Lakhs Deductible starting{" "}
-                <strong>₹565</strong>/year Premium including GST for Age 30 Male
+                Get <strong className={"text-black font-semibold"}>₹10</strong> Lakhs Sum Insured with:<br/>
+                <strong className={"text-black font-semibold"}>₹5</strong> Lakhs Deductible starting{" "}
+                <strong className={"text-black font-semibold"}>₹1612</strong>/year<br/>
+                <strong className={"text-black font-semibold"}>₹7</strong> Lakhs Deductible starting
+                <strong className={"text-black font-semibold"}> ₹809</strong>/year<br/>
+                <strong className={"text-black font-semibold"}>₹10 </strong>Lakhs Deductible starting{" "}
+                <strong className={"text-black font-semibold"}>₹565</strong>/year Premium including GST for Age 30 Male
               </>
             }
             bgDesktopImage="/images/abg-health-insu-card.png"
@@ -132,7 +132,7 @@ const cardGrid = () => {
         <div className="col-span-3 ">
           <Card
             title={"Life Insurance - Saving Plan - Nishchit Aayush"}
-            subTitle={<>Increased income benefit of <strong>3%</strong></>}
+            subTitle={<>Increased income benefit of <strong className={"text-black font-semibold"}>3%</strong></>}
             bgDesktopImage="/images/ey-box-saving-ayush.png"
             bgMobileImage="/images/ey-box-saving-ayush-mob.png"
           />
@@ -140,12 +140,8 @@ const cardGrid = () => {
         <div className="col-span-3 ">
           <Card
             title={"Motor Insurance - Tata AIG"}
-            subTitle={
-              <>
-                "Get a discount of up to 5% on personal vehicles registered in
-                your name.
-              </>
-            }
+            subTitle="Get a discount of up to 5% on personal vehicles registered in
+                your name."
             bgDesktopImage="/images/abg-motor-insu.png"
             bgMobileImage="/images/abg-motor-insu-mob.png"
             width="70%"
