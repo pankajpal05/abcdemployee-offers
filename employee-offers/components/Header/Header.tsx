@@ -38,7 +38,7 @@ const Header = () => {
           className="transition-transform duration-300 pl-5"
           style={{ transform: `scale(${logoScale})`, transformOrigin: "left center" }}
         >
-          <img src="/images/campaign_new_logo.png" alt="Logo" className="h-12 w-auto" />
+          <img src="/images/campaign_new_logo.png" alt="Logo" className="max-h-12 w-auto" />
         </div>
 
         <div className="w-full">

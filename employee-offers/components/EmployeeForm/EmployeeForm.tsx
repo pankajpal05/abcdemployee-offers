@@ -34,11 +34,11 @@ const EmployeeForm = () => {
   const isFormValid = formData.agreeTerms && formData.fullName.length > 0; 
 
   return (
-    <div className="min-h-screen flex items-center justify-center lg:p-6 font-sans">
-      <div className="w-full lg:w-[431px] text-white rounded-2xl p-6 lg:p-8"
+    <div className="flex  justify-end">
+      <div className="lg:w-[431px] text-white rounded-2xl p-6 lg:p-[35px]"
         style={{
           background: 'radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)',
-          width: '431px', 
+           
         }}
       >
         <h1 className="text-[25px] xl:text-[28px] lg:pr-10 font-medium text-white mb-2.5 leading-tight">
