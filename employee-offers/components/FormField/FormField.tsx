@@ -1,7 +1,8 @@
 import { ChevronDown } from "lucide-react";
 
- const FormField = ({ icon: Icon, placeholder, type = 'text', value, onChange, options = [], isSelect = false, prefix = null }:{
+ const FormField = ({ icon: Icon, name, placeholder, type = 'text', value, onChange, options = [], isSelect = false, prefix = null }:{
   icon: React.ComponentType<any>,
+  name: string,
   placeholder: string,
   type?: string,
   value: string,
@@ -23,6 +24,7 @@ import { ChevronDown } from "lucide-react";
             className={`${commonClasses} appearance-none pr-10 pl-12 cursor-pointer`}
             value={value}
             onChange={onChange}
+            name={name}
           >
             <option className='text-[#f2f2f2] bg-[#515151]' value="" disabled>{placeholder}</option>
             {options.map((option, index) => (
@@ -43,6 +45,7 @@ import { ChevronDown } from "lucide-react";
             placeholder={placeholder}
             className={`${commonClasses} ${prefix ? 'pl-20' : 'pl-12'}`}
             value={value}
+            name={name}
             onChange={onChange}
           />
         </div>

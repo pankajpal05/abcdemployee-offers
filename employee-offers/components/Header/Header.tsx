@@ -35,25 +35,23 @@ const Header = () => {
       <div className="flex items-center gap-5 justify-between">
        
         <div
-          className="transition-transform duration-300 pl-5"
-          style={{ transform: `scale(${logoScale})`, transformOrigin: "left center" }}
+          className="transition-all duration-300 pl-5"
+          style={{ transform: `scale(${logoScale})`, transformOrigin: "left center" , paddingTop: showTop ? '20px' : '0px'}}
         >
-          <img src="/images/campaign_new_logo.png" alt="Logo" className="h-12 w-auto" />
+          <img src="/images/campaign_new_logo.png" alt="Logo" className="max-h-12 w-auto" />
         </div>
 
         <div className="w-full">
        
           <div
-            className={`flex justify-end gap-10 transition-all ease-in-out duration-500${
-              showTop ? " opacity-100 min-h-[30px] items-center " : "opacity-0 max-h-0 overflow-hidden"
-            }`}
+           className={`flex justify-end items-center gap-10 transition-all ease-in-out duration-500 h-[30px]  ${showTop ? "opacity-100 max-h-[40px]" : "opacity-0 max-h-0"}`}
           >
             <p className="max-md:hidden text-[#2A2E34] text-sm">
               Aditya Birla Capital Digital Limited
             </p>
             <a
               href="tel:08035092882"
-              className="text-[#CA1F34] text-center text-sm flex items-center gap-2.5 pr-2.5 lg:pr-10"
+              className="text-[#CA1F34] text-center text-sm font-bold max-md:text-xs  flex items-center gap-1 pr-2.5 lg:pr-10"
             >
               <img src="/images/phone-call.png" alt="Phone Icon" />
               080 350 92882
@@ -61,7 +59,8 @@ const Header = () => {
           </div>
 
       
-          <div className="bg-[#CA1F34] px-10 h-16 rounded-bl-2xl flex items-center text-white">
+          <div className="bg-[#CA1F34] px-10 h-16 rounded-bl-2xl items-center text-white flex justify-end">
+            <p className="md:hidden text-sm">Aditya Birla Capital Digital Limited</p>
            
           </div>
         </div>

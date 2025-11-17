@@ -12,19 +12,29 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className="py-[50px]">
+      <div className="pt-[50px]">
         <MaxWidthContainer>
-          <div className="flex flex-col lg:flex-row relative">
-            <div className="w-full lg:w-[60.5%]">
-              <AdvantageBanner />
-              <CardGrid />
+           <div className="flex flex-col lg:flex-row lg:gap-5 relative">
+            <div className="w-full lg:w-[60.5%] flex flex-col">
+              <div className="order-1">
+                <AdvantageBanner />
+              </div>
+
+              <div className="order-2 mt-12 lg:mt-0 lg:hidden">
+                <Form />
+              </div>
+
+              <div className="order-3">
+                <CardGrid />
+              </div>
             </div>
-            <div className="w-full md:w-full lg:w-2/5 sticky top-2 self-start  lg:block">
+            <div className="hidden lg:block w-full lg:w-2/5 sticky top-2 self-start">
               <Form />
+
             </div>
           </div>
         </MaxWidthContainer>
-        <MaxWidthContainer>
+        <MaxWidthContainer extraClasses="max-md:py-0 max-md:pt-7 max-xl:!py-[60px]">
           <DiscoverCard
             imageAlignment="right"
             title={"Discover Convenience Like Never Before"}
@@ -34,6 +44,7 @@ export default function Home() {
             description={"Download the ABCD App Now"}
             buttonTitle={"Download App"}
           />
+       
         </MaxWidthContainer>
       </div>
       <Accordion AccordionTitle={"Disclaimer"}>

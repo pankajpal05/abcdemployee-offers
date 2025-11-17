@@ -13,7 +13,7 @@ const MaxWidthContainer: React.FC<MaxWidthContainerProps> = ({
 }) => {
   return (
     <div
-      className={`max-w-[var(--breakpoint-large)] scroll-mt-20 md:scroll-mt-15 mx-auto px-5 py-10 md:px-10 md:py-15 ${extraClasses}`}
+      className={`max-w-[var(--breakpoint-large)] scroll-mt-20 md:scroll-mt-15 mx-auto px-4 py-20 lg:px-10 lg:py-25 ${extraClasses}`}
       id={id}
     >
       {children}
