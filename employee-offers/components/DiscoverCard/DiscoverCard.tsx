@@ -26,7 +26,7 @@ const Discover: React.FC<DiscoverProps> = ({
               <h2 className="text-left mb-4 text-[35px] leading-10 xl:text-[44px] xl:leading-12 text-[#1f1f1f] xl:w-[90%] font-semibold">
                 {title}
               </h2>
-              <p className="text-sm xl:text-base leading-4 font-semibold text-[#333333cc] w-[70%]">{subTitle}</p>
+              <p className="text-sm xl:text-base leading-4 font-semibold text-[#333333cc] w-[63%]">{subTitle}</p>
             </div>
 
             <div className="mt-[58px]">

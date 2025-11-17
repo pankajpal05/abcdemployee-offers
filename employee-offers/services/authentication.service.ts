@@ -1,4 +1,4 @@
-// import { httpService } from "@/lib/httpservice"
+ import { httpService } from "@/lib/httpservice"
 
 export const generateUserToken = async () => {
   try {
@@ -18,93 +18,37 @@ export const generateUserToken = async () => {
     return data?.access_token
  
   } catch (error) {
-    console.log(error,"error fetching token");
+    console.error(error,"error fetching token");
     return;
   }
 };
 
 
-// export const generateOTPService = async (
-//   email,
-//   numValue,
-//   userToken,
-//   employeeType,
-//   bearerToken,
-// ) => {
-//   const payload =
-//     employeeType === "ABG Employee"
-//       ? { emailID: email }
-//       : { mobileNo: numValue };
 
-//   const otpBody = payload?.mobileNo
-//     ? {
-//         Source: process.env.NEXT_PUBLIC_ABCD_OTP_SOURCE,
-//         Functionality: process.env.NEXT_PUBLIC_ABCD_OTP_MOBILE_FUNCTIONALITY,
-//         MobileNo: payload?.mobileNo,
-//       }
-//     : {
-//         Source: process.env.NEXT_PUBLIC_ABCD_OTP_SOURCE,
-//         Functionality: process.env.NEXT_PUBLIC_ABCD_OTP_EMAIL_FUNCTIONALITY,
-//         EmailId: payload?.emailID,
-//       };
+export const generateOTPService = async (phoneNo: string) => {
+ 
+  try {
+    const response = await httpService.post('/api/generate-otp', {
+      phoneNo :phoneNo,
+    });   
+  const data = response.data;
+  return data;
+  } catch (error) {
+    console.error("Error in generateOTPService:", error);
+    throw "Error generating OTP";
+  }
+}
 
-//   const payloadIV = encryptData(otpBody);
-//   const payloadCV = encryptData(userToken);
-
-//   const combinedPayload = {
-//     payloadIV,
-//     payloadCV,
-//   };
-
-//   return httpService.post("/api/client/generate-otp", combinedPayload, {
-//     headers: {
-//       "Content-Type": "application/json",
-//       Authorization: `Bearer ${bearerToken}`,
-//     },
-//   });
-// };
-
-// export const validateOTPService = async (
-//   email,
-//   numValue,
-//   allValues,
-//   userToken,
-//   bearerToken,
-// ) => {
-//   const payload = email
-//     ? { email, OTP: Number(allValues.join("")) }
-//     : { mobileNo: numValue, OTP: Number(allValues.join("")) };
-
-//   const otpBody = payload?.mobileNo
-//     ? {
-//         Source: process.env.NEXT_PUBLIC_ABCD_OTP_SOURCE,
-//         Functionality: process.env.NEXT_PUBLIC_ABCD_OTP_MOBILE_FUNCTIONALITY,
-//         MobileNo: payload?.mobileNo,
-//         OTP: payload?.OTP,
-//       }
-//     : {
-//         Source: process.env.NEXT_PUBLIC_ABCD_OTP_SOURCE,
-//         Functionality: process.env.NEXT_PUBLIC_ABCD_OTP_EMAIL_FUNCTIONALITY,
-//         EmailId: payload?.email,
-//         OTP: payload?.OTP,
-//       };
-
-//   const payloadCV = encryptData(userToken);
-//   const payloadSource = encryptData(otpBody);
-
-//   const combinedEncryptedPayload = {
-//     payloadCV,
-//     payloadSource,
-//   };
-
-//   return httpService.post(
-//     "/api/client/validate-otp",
-//     combinedEncryptedPayload,
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${bearerToken}`,
-//       },
-//     },
-//   );
-// };
+export const validateOTPService = async ( otp: string, mobile: string,) => {
+  try {
+    const response = await httpService.post('/api/validate-otp', {
+      mobile,
+      otp
+        })
+    const data = response.data;
+    return data;
+  }catch (error) {
+    console.error("Error in validateOTPService:", error);
+    throw "Error validating OTP";
+  } 
+}
