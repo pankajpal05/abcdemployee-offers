@@ -1,16 +1,19 @@
 "use client"
 import{ useEffect, useState } from "react";
 
-const Header = () => {
+const Header = ({ headerNote = true }) => {
   const [showTop, setShowTop] = useState(true);
   const [logoScale, setLogoScale] = useState(1);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
+ if (!headerNote) {
+      setShowTop(true);
+      setLogoScale(1);
+      return;
+    }
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      
       if (currentScrollY > lastScrollY) {
         // Scrolling up
         setShowTop(false);
@@ -35,14 +38,15 @@ const Header = () => {
       <div className="flex items-center gap-5 justify-between">
        
         <div
-          className="transition-all duration-300 pl-5"
-          style={{ transform: `scale(${logoScale})`, transformOrigin: "left center" , paddingTop: showTop ? '20px' : '0px'}}
+          className="transition-all duration-300  lg:pl-16 pl-[22px]"
+          style={{ transform: `scale(${logoScale})`, transformOrigin: "left center" , paddingTop: showTop ?  `${headerNote ? '20px' : "10px"}` : '0px' ,paddingBottom: showTop ? `${headerNote ? '0px' : "10px"}` : '0px' }}
         >
           <img src="/images/campaign_new_logo.png" alt="Logo" className="max-h-12 w-auto" />
         </div>
 
         <div className="w-full">
-       
+        {
+            headerNote &&
           <div
            className={`flex justify-end items-center gap-10 transition-all ease-in-out duration-500 h-[30px]  ${showTop ? "opacity-100 max-h-[40px]" : "opacity-0 max-h-0"}`}
           >
@@ -57,10 +61,10 @@ const Header = () => {
               080 350 92882
             </a>
           </div>
-
+}
       
-          <div className="bg-[#CA1F34] px-10 h-16 rounded-bl-2xl items-center text-white flex justify-end">
-            <p className="md:hidden text-sm">Aditya Birla Capital Digital Limited</p>
+          <div className={`bg-[#CA1F34] px-10 h-16 rounded-bl-2xl items-center text-white flex ${headerNote?"justify-end":"justify-start"}`}>
+            <p className={`${headerNote?"md:hidden text-sm":"text-lg font-semibold"}`}>Aditya Birla Capital Digital Limited</p>
            
           </div>
         </div>

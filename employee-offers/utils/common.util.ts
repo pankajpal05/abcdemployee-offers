@@ -1,4 +1,6 @@
 
+import {PRODUCT_CONFIG} from '@/constant/constant';
+
 type FormDataType = {
   productType: string;
   fullName: string;
@@ -36,4 +38,43 @@ type FormDataType = {
 };
 
 
-export { validateForm };
+ const createPayload = (formData: any) => {
+  // @ts-ignore
+  const config = PRODUCT_CONFIG[formData.productType] || {};
+
+  const userAgent = navigator.userAgent;
+  let browserName = "Unknown";
+
+  if (/chrome|crios|crmo/i.test(userAgent) && !/edge|edg|opr|opera/i.test(userAgent)) {
+    browserName = "Chrome";
+  } else if (/firefox|fxios/i.test(userAgent)) {
+    browserName = "Firefox";
+  } else if (/safari/i.test(userAgent) && !/chrome|crios|crmo/i.test(userAgent)) {
+    browserName = "Safari";
+  } else if (/edg/i.test(userAgent)) {
+    browserName = "Edge";
+  } else if (/opr|opera/i.test(userAgent)) {
+    browserName = "Opera";
+  }
+
+  const cookies = Object.fromEntries(
+    document.cookie.split("; ").map((c) => {
+      const [key, value] = c.split("=");
+      return [key, decodeURIComponent(value)];
+    })
+  );
+
+  let GAClient_Idc = "";
+  if (cookies._ga && cookies._ga.length > 6) {
+    GAClient_Idc = cookies._ga.slice(6);
+  }
+
+  return {
+    ...formData,
+    ...config,
+    browserName, 
+    GAClient_Idc,
+  };
+};
+
+export { validateForm, createPayload };

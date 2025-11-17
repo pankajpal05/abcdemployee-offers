@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,9 +12,36 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
-      <body      >
+      <head>
+        <Script id="gtm-script" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PCGF393');
+          `}
+        </Script>
+
+        {/* MFilterIt Script */}
+        <Script id="mfilterit-script" strategy="afterInteractive">
+          {`
+            (function (m, f, i, l, t, e, r) {
+              m[t] = m[t] || function () { (m[t].q = m[t].q || []).push(arguments) }, m[t].l = 1 * new Date();
+              e = f.createElement(l); e.async = 1; e.id = "mfilterit-visit-tag"; e.src = i;
+              r = f.getElementsByTagName(l)[0]; r.parentNode.insertBefore(e, r);
+            })(window, document, "https://script.mfilterit.net/v3/v/client/com.abcd_rt.js",
+              "script", "mf");
+
+            mf("mf_package_name", "com.abcd_rt");
+            mf("mf_tracking_type", "pageviews");
+          `}
+        </Script>
+      </head>
+      <body>
         {children}
       </body>
     </html>
