@@ -5,10 +5,10 @@ import FooterNote from "../../../components/FooterNote/FooterNote";
 
 const Thankyou = () => {
   return (
-    <div>
+    <div className="h-screen">
       <Header headerNote={false} />
       <MaxwidthContainer extraClasses="w-full px-4 md:!px-10 2xl:!px-0 md:!pb-8 md:!pt-[90px] ">
-        <div className=" grid grid-cols-1 lg:rounded-4xl rounded-xl lg:grid-cols-2 xl:gap-[100px] items-center bg-[#70b86533] md:px-12">
+        <div className=" grid grid-cols-1 lg:rounded-4xl rounded-xl lg:grid-cols-2 xl:gap-[100px] min-h-[85vh] items-center bg-[#70b86533] md:px-12">
           {/* LEFT SIDE */}
           <div className="flex flex-col items-center justify-center p-[15px]">
             <img
@@ -39,7 +39,7 @@ const Thankyou = () => {
                 <a
                   href="https://www.adityabirlacapital.com/?utm_source=abg_employee&utm_medium=organic&utm_campaign=microsite"
                   target="_blank"
-                  className="bg-[#c91429] uppercase text-white max-sm:px-14 lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-[#c91429] transition"
+                  className="bg-[#c91429] outline-0 uppercase text-white max-sm:px-14 lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-[#c91429] transition"
                 >
                   Explore Our Website
                 </a>
