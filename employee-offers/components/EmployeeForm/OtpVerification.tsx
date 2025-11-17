@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 
 const OTP_LENGTH = 6;
 
-const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
+const OtpVerification = ({ mobileNumber }: { mobileNumber: string }) => {
     const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
     const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
@@ -49,75 +49,75 @@ const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
 
     const handleSubmit = async () => {
         const fullOtp = otp.join("");
-      const response =  await validateOTPService(fullOtp, mobileNumber)
-    if (response.data?.Error) {
-        //Invalid OTP. Please input correct OTP.
-     console.log("OTP Invalid:", response.data.Error.Error_Message);
-     } else if (response.data?.message === "Valid OTP") {
-       console.log("OTP Valid!");
-       setIsOtpVerified(true);
-    }
+        const response = await validateOTPService(fullOtp, mobileNumber)
+        if (response.data?.Error) {
+            //Invalid OTP. Please input correct OTP.
+            console.log("OTP Invalid:", response.data.Error.Error_Message);
+        } else if (response.data?.message === "Valid OTP") {
+            console.log("OTP Valid!");
+            setIsOtpVerified(true);
+        }
     };
     return (
-            <div
-                className="w-[350px] p-[25px] rounded-[18px] text-center"
-                style={{
-                    background:
-                        "radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)",
-                }}
-            >
-                {isOtpVerified ? (
+        <div
+            className="w-[431px] p-[35px] rounded-[18px] text-center"
+            style={{
+                background:
+                    "radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)",
+            }}
+        >
+            {isOtpVerified ? (
                 <div className="text-white text-lg font-medium">
-                   <h2 className="text-2xl font-bold my-5">OTP Verified Successfully!</h2> 
-                   <div className=""> 
-                    <img src="/images/successfull_tick.gif" alt="Success" className="mx-auto mb-4 w-15 h-15" />
-                   <p>OTP Succesfully Verified!</p>
-                   </div>
-                </div>
-            ) : (
-                
-                <div className="wrapper"> 
-                <div className="mb-[18px]">
-                    <h2 className="text-[28px] font-medium mb-6 text-white">
-                        OTP Verification
-                    </h2>
-                    <div className="flex justify-between gap-3 mb-4" onPaste={handlePaste}>
-                        {otp.map((value, index) => (
-                            <input
-                                key={index}
-                                ref={(el: any) => (inputRefs.current[index] = el)}
-                                type="text"
-                                maxLength={1}
-                                value={value}
-                                onChange={(e) => handleChange(e.target.value, index)}
-                                onKeyDown={(e) => handleKeyDown(e, index)}
-                                className="w-[35px] text-xs h-[35px] border border-gray-500 rounded-lg bg-transparent text-white font-normal
-                         text-center focus:outline-none focus:border-white transition"
-                            />
-                        ))}
+                    <h2 className="text-2xl font-bold my-5">OTP Verified Successfully!</h2>
+                    <div className="">
+                        <img src="/images/successfull_tick.gif" alt="Success" className="mx-auto mb-4 w-15 h-15" />
+                        <p>OTP Succesfully Verified!</p>
                     </div>
                 </div>
-                {/* Status message */}
-                <p className="text-red-400 text-sm mb-4 font-medium">
-                    OTP Sent Successfully.
-                </p>
-                <button
-                    onClick={handleSubmit}
-                    disabled={!isOtpComplete}
-                    className={`w-full py-3 rounded-full  text-red-700 font-bold tracking-wider
-                     text-sm  ${isOtpComplete
-                            ? "bg-white  cursor-pointer"
-                            : "bg-gray-400 cursor-not-allowed"
-                        }`}
+            ) : (
 
-                >
-                    VERIFY OTP
-                </button>
-          </div>
+                <div className="wrapper">
+                    <div className="mb-[18px]">
+                        <h2 className="text-[28px] font-medium mb-2 text-white mt-[120px]">
+                            OTP Verification
+                        </h2>
+                        <div className="flex justify-between mb-4" onPaste={handlePaste}>
+                            {otp.map((value, index) => (
+                                <input
+                                    key={index}
+                                    ref={(el: any) => (inputRefs.current[index] = el)}
+                                    type="text"
+                                    maxLength={1}
+                                    value={value}
+                                    onChange={(e) => handleChange(e.target.value, index)}
+                                    onKeyDown={(e) => handleKeyDown(e, index)}
+                                    className="w-[53px] text-xs h-[53px]  bg-[#ffffff1a] rounded-lg  text-[#f2f2f2] font-normal
+                         text-center focus:outline-none focus:border-white transition"
+                                />
+                            ))}
+                        </div>
+                    </div>
+                    {/* Status message */}
+                    <p className="text-[#ff919d] text-sm text-start font-medium">
+                        OTP Sent Successfully.
+                    </p>
+                    <button
+                        onClick={handleSubmit}
+                        disabled={!isOtpComplete}
+                        className={`w-full py-3 rounded-full  text-[#ca1f34] font-bold tracking-wider
+                     text-lg   ${isOtpComplete
+                                ? "bg-white  cursor-pointer"
+                                : "bg-[#c6c5c9] cursor-not-allowed"
+                            }`}
+
+                    >
+                        VERIFY OTP
+                    </button>
+                </div>
             )}
 
-            </div>
-      
+        </div>
+
     );
 };
 
