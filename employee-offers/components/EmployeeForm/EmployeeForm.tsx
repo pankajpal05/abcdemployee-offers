@@ -3,13 +3,25 @@ import {   useState } from 'react';
 import { LayoutGrid, User, Mail, Building, MapPin, Smartphone, } from 'lucide-react';
 import FormField from '../FormField/FormField';
 import CheckboxItem from '../CheckBoxItem/CheckBoxItem';
-import { ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS, ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS } from '@/constant/constant';
+import { ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS, ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS, PRODUCT_CONFIG } from '@/constant/constant';
 import { validateForm } from '@/utils/common.util';
 import OtpVerification from './OtpVerification';
 import { generateOTPService } from '@/services/authentication.service';
 
+
+export interface FormDataType {
+  productType: string;
+  fullName: string;
+  emailId: string;
+  companyName: string;
+  pincode: string;
+  mobileNumber: string;
+  agreeTerms: boolean;
+  getUpdates: boolean;
+}
+
 const EmployeeForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormDataType>({
     productType: '',
     fullName: '',
     emailId: '',
@@ -18,7 +30,6 @@ const EmployeeForm = () => {
     mobileNumber: '',
     agreeTerms: false,
     getUpdates: false,
-    nameInput: ''
   });
  const [error, setError] = useState<string>("");
  const [isFormTouched, setIsFormTouched] = useState(false);
@@ -61,11 +72,12 @@ const handleSubmit = async (e: React.FormEvent) => {
     }
   };
 
+  
   const isFormValid = error === "" && isFormTouched;
   return (
     <div className=" flex justify-end">
       {showOtpScreen ? (
-        <OtpVerification mobileNumber={formData.mobileNumber} />
+        <OtpVerification formData={formData} />
       ) : (
       <div className="w-full lg:w-[431px] text-white rounded-2xl p-6 lg:p-[35px]"
         style={{

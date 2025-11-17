@@ -1,15 +1,18 @@
 "use client";
-import { validateOTPService } from "@/services/authentication.service";
+import { createLeadService, validateOTPService } from "@/services/authentication.service";
+import { createPayload } from "@/utils/common.util";
+import { encryptData } from "@/utils/encryption";
 import React, { useRef, useState } from "react";
-
+import { useRouter } from "next/navigation";
 const OTP_LENGTH = 6;
 
-const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
+const OtpVerification = ({ formData }: { formData: any }) => {
     const [otp, setOtp] = useState<string[]>(Array(OTP_LENGTH).fill(""));
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+    const [otpMessage, setOtpMessage] = useState<string>(" OTP Sent Successfully.");
     const [isOtpVerified, setIsOtpVerified] = useState<boolean>(false);
     const isOtpComplete = otp.every((digit) => digit !== "");
-
+    const router = useRouter();
     const handleChange = (value: string, index: number) => {
         if (!/^\d*$/.test(value)) return;
         const updatedOtp = [...otp];
@@ -49,18 +52,31 @@ const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
 
     const handleSubmit = async () => {
         const fullOtp = otp.join("");
-      const response =  await validateOTPService(fullOtp, mobileNumber)
+      const response =  await validateOTPService(fullOtp, formData.mobileNumber)
     if (response.data?.Error) {
         //Invalid OTP. Please input correct OTP.
-     console.log("OTP Invalid:", response.data.Error.Error_Message);
+     setOtpMessage("Invalid OTP. Please input correct OTP.");
      } else if (response.data?.message === "Valid OTP") {
-       console.log("OTP Valid!");
-       setIsOtpVerified(true);
+     const payload = createPayload(formData);
+      setIsOtpVerified(true);
+      const encryptPayload = encryptData(payload);
+     const res =  await createLeadService(encryptPayload);
+     console.log("Lead creation response:", res);
+      const sfResponse = res?.data?.compositeResponse?.[0];
+    const leadBody = sfResponse?.body;
+    if (leadBody?.success === true) {
+      console.log("Lead stored successfully:", leadBody.id);
+        sessionStorage.setItem("thankyouToken", Date.now().toString());
+      router.push("/campaign/addvantage-employee-offers/thank-you");
+    }else{
+        setOtpMessage("Failed to create lead. Please try again.");
+    }
     }
     };
+
     return (
             <div
-                className="w-[350px] p-[25px] rounded-[18px] text-center"
+                className="w-[431px] p-[35px] rounded-[18px] text-center"
                 style={{
                     background:
                         "radial-gradient(92.49% 103.55% at 89.79% 89.84%, rgba(79, 79, 79, 0.9) 0%, rgba(17, 17, 17, 0.9) 100%)",
@@ -78,10 +94,10 @@ const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
                 
                 <div className="wrapper"> 
                 <div className="mb-[18px]">
-                    <h2 className="text-[28px] font-medium mb-6 text-white">
+                    <h2 className="text-[28px] font-medium mb-2 text-white mt-[120px]">
                         OTP Verification
                     </h2>
-                    <div className="flex justify-between gap-3 mb-4" onPaste={handlePaste}>
+                    <div className="flex justify-between  mb-4" onPaste={handlePaste}>
                         {otp.map((value, index) => (
                             <input
                                 key={index}
@@ -91,23 +107,23 @@ const OtpVerification = ({mobileNumber}:{mobileNumber: string}) => {
                                 value={value}
                                 onChange={(e) => handleChange(e.target.value, index)}
                                 onKeyDown={(e) => handleKeyDown(e, index)}
-                                className="w-[35px] text-xs h-[35px] border border-gray-500 rounded-lg bg-transparent text-white font-normal
+                                className="w-[53px] text-xs h-[53px]  bg-[#ffffff1a] rounded-lg  text-[#f2f2f2] font-normal
                          text-center focus:outline-none focus:border-white transition"
                             />
                         ))}
                     </div>
                 </div>
                 {/* Status message */}
-                <p className="text-red-400 text-sm mb-4 font-medium">
-                    OTP Sent Successfully.
+                <p className="text-[#ff919d] text-sm text-start mb-4 font-medium">
+                    {otpMessage}
                 </p>
                 <button
                     onClick={handleSubmit}
                     disabled={!isOtpComplete}
-                    className={`w-full py-3 rounded-full  text-red-700 font-bold tracking-wider
-                     text-sm  ${isOtpComplete
+                    className={`w-full py-3 rounded-full  text-[#ca1f34] font-bold tracking-wider
+                     text-lg  ${isOtpComplete
                             ? "bg-white  cursor-pointer"
-                            : "bg-gray-400 cursor-not-allowed"
+                            : "bg-[#c6c5c9] cursor-not-allowed"
                         }`}
 
                 >

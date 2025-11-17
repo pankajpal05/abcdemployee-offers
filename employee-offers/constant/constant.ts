@@ -137,4 +137,175 @@ const ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS = [
 ];
 
 
-  export { ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS, ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS };
+ const PRODUCT_CONFIG = {
+  HL: {
+    productcode: "ABHFL",
+    productcategory: "Home Loan",
+    target: "Home Loan",
+    productname: "Home loan",
+  },
+  AF: {
+    productcode: "ABHI",
+    productcategory: "Base",
+    target: "Activ Fit Plus",
+    productname: "Activ Fit Plus",
+  },
+  "Health Insurance": {
+    productcode: "ABHI",
+    productcategory: "Base",
+    target: "Activ Fit Plus",
+    productname: "Activ Fit Plus",
+  },
+  MF: {
+    productcode: "ABSLAMC",
+    productcategory: "EQUITY",
+    target: "ABSL MULTI- INDEX FUND OF FUNDS",
+    productname: "",
+  },
+  Forex: {
+    productcode: "Forex",
+    productcategory: "Currency",
+    target: "Forex",
+    productname: "Currency",
+  },
+  HE: {
+    productcode: "ABHFL",
+    productcategory: "Home Loan",
+    target: "ABSL MULTI- INDEX FUND OF FUNDS",
+    productname: "Loan Against Property",
+  },
+  PL: {
+    productcode: "ABFL",
+    productcategory: "Personal Loan",
+    target: "Personal Loan",
+    productname: "Personal Loan",
+  },
+  HFCCF: {
+    productcode: "ABHFL",
+    productcategory: "Home Loan",
+    target: "Home Loan",
+    productname: "",
+  },
+  BIL: {
+    productcode: "ABFL",
+    productcategory: "Business Loan",
+    target: "Business Loan",
+    productname: "Business Loan",
+  },
+  "Life Insurance": {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "ABSLI Digishield Plan",
+    productname: "ABSLI Nishchit Aayush Plan",
+  },
+  "Salary Term": {
+    productcode: "ABSLI",
+    productcategory: "Term",
+    target: "",
+    productname: "ABSLI Salaried Term Plan",
+  },
+  SS: {
+    productcode: "ABML",
+    productcategory: "Demat",
+    target: "Open Demat Account",
+    productname: "Demat account opening",
+  },
+  "Stocks & Securities": {
+    productcode: "ABML",
+    productcategory: "Demat",
+    target: "Open Demat Account",
+    productname: "Demat account opening",
+  },
+  NAP: {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "Activ Fit Plus",
+    productname: "ABSLI Nishchit Aayush Plan",
+  },
+  ASP: {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "Activ Fit Plus",
+    productname: "ABSLI Assured Savings Plan",
+  },
+  TRM: {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "Activ Fit Plus",
+    productname: "ABSLI Assured Savings Plan",
+  },
+  AIP: {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "Activ Fit Plus",
+    productname: "ABSLI Assured Income Plus",
+  },
+  FMP: {
+    productcode: "ABSLI",
+    productcategory: "Savings",
+    target: "Activ Fit Plus",
+    productname: "ABSLI Fixed Maturity Plan",
+  },
+  bike: {
+    productcode: "Motor Insurance",
+    productcategory: "Two wheeler",
+    target: "",
+    productname: "",
+  },
+  car: {
+    productcode: "Motor Insurance",
+    productcategory: "Four wheeler",
+    target: "",
+    productname: "",
+  },
+  "Credit Card": {
+    productcode: "ABFL",
+    productcategory: "Credit Card",
+    target: "Credit Card",
+    productname: "Credit Card",
+  },
+  "Mutual Fund": {
+    productcode: "ABSLAMC",
+    productcategory: "Debt",
+    target: "Mutual Fund",
+    productname: "ABSL Savings Fund",
+  },
+  "Gold Loan": {
+    productcode: "Gold Loan",
+    productcategory: "Gold Loan",
+    target: "Gold Loan",
+    productname: "Gold Loan",
+  },
+  LAMF: {
+    productcode: "Loan Against Securities",
+    productcategory: "Loan Against Mutual Fund",
+    target: "LAMF",
+    productname: "Loan Against Mutual Fund",
+  },
+  "Balance Transfer": {
+    productcode: "ABHFL",
+    productcategory: "Home Loan",
+    target: "Balance Transfer",
+    productname: "Balance Transfer",
+  },
+  "NPS Vatsalya": {
+    productcode: "NPS",
+    productcategory: "NPS",
+    target: "NPS Vatsalya",
+    productname: "NPS Vatsalya",
+  },
+  "Corporate NPS": {
+    productcode: "NPS",
+    productcategory: "NPS",
+    target: "Corporate NPS",
+    productname: "Corporate NPS",
+  },
+  "HE Top up": {
+    productcode: "ABHI",
+    productcategory: "Super top",
+    target: "Corporate HE Top up",
+    productname: "Super Health Plus Top up Plan B",
+  },
+};
+
+  export { ADVANTAGE_EMPLOYEE_OFFERS_TYPE_OF_PRODUCTS, ADVANTAGE_EMPLOYEE_OFFERS_COMPANY_OPTIONS, PRODUCT_CONFIG };

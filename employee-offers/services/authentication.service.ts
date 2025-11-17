@@ -23,8 +23,6 @@ export const generateUserToken = async () => {
   }
 };
 
-
-
 export const generateOTPService = async (phoneNo: string) => {
  
   try {
@@ -51,4 +49,15 @@ export const validateOTPService = async ( otp: string, mobile: string,) => {
     console.error("Error in validateOTPService:", error);
     throw "Error validating OTP";
   } 
+}
+
+export const createLeadService = async (leadData: any) => {
+  try {
+    const response = await httpService.post('/api/create-lead', leadData);  
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.error("Error in createLeadService:", error);
+    throw "Error creating lead";
+  }
 }
