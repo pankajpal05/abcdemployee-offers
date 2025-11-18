@@ -74,6 +74,9 @@ body {
   --text-heading: 40px;
   --text-section-heading-sm: 44px;
   --text-heading-sm: 32px;
+ --color-primary: #C91429;
+ --color-charcoal-100 :#111111cc;
+  --color-charcoal-200 :#1f1f1f;
 }
 
 html {

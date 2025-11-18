@@ -30,14 +30,14 @@ const Thankyou = () => {
                                 alt="Success"
                             />
 
-                            <h3 className="sm:text-2xl text-lg font-semibold leading-7 text-center mb-4 text-[#1f1f1fcc]">
+                            <h3 className="sm:text-2xl text-lg font-semibold leading-7 text-center mb-4 text-charcoal-200">
                                 Thank you for sharing your responses. Our Regional
                                 <br className="lg:hidden max-sm:hidden" /> Manager will
                                 contact you soon.
                             </h3>
 
                             <div className=" xl:mt-[72px]">
-                                <p className="text-[#111111cc] max-sm:text-sm text-lg mb-6 leading-[22px] text-center">
+                                <p className="text-charcoal-100 max-sm:text-sm text-lg mb-6 leading-[22px] text-center">
                                     From{" "}
                                     <i>
                                         smart investments to insurance, seamless payments to instant
@@ -52,7 +52,7 @@ const Thankyou = () => {
                                     <a
                                         href="https://www.adityabirlacapital.com/?utm_source=abg_employee&utm_medium=organic&utm_campaign=microsite"
                                         target="_blank"
-                                        className="bg-[#c91429] outline-0 uppercase text-white max-sm:px-14 lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-[#c91429] transition"
+                                        className="bg-primary outline-0 uppercase text-white max-sm:px-14 lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-primary transition"
                                     >
                                         Explore Our Website
                                     </a>
@@ -60,7 +60,7 @@ const Thankyou = () => {
                                     <a
                                         href="https://adityabirlacapitaldigital.onelink.me/vYLv/5lc79n1l"
                                         target="_blank"
-                                        className="border-2 uppercase border-[#c91429] text-[#c91429] lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-red-50 transition flex items-center gap-2"
+                                        className="border-2 uppercase border-primary text-primary lg:px-6 xl:px-10 px-12 md:px-6 py-3 rounded-full font-medium hover:bg-red-50 transition flex items-center gap-2"
                                     >
                                         Download App
                                         <span className="store-span flex gap-2 items-center">
