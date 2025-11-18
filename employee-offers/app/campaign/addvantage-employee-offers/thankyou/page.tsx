@@ -10,12 +10,10 @@ const Thankyou = () => {
     const router = useRouter();
     useEffect(() => {
         const token = sessionStorage.getItem("thankyouToken");
-
         if (!token) {
             router.replace("/campaign/addvantage-employee-offers");
             return;
         }
-        sessionStorage.removeItem("thankyouToken");
     }, []);
 
     return (

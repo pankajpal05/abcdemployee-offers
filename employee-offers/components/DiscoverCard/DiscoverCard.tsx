@@ -51,7 +51,7 @@ const Discover: React.FC<DiscoverProps> = ({
           <p className="text-[#333333cc] text-[10px] text-center font-semibold leading-2.5 px-1 mt-2.5">Scan to download the app</p>
           </div>
         <div className="animate-custom-bounce w-full place-items-baseline">
-          <img className="w-[80%] xl:w-[95%]" src="/images/abg_discover_download_img.png" alt="img3" />
+          <img className="w-[80%] xl:w-[95%]" loading="lazy" src="/images/abg_discover_download_img.png" alt="img3" />
         </div>
 
 
@@ -76,14 +76,14 @@ const Discover: React.FC<DiscoverProps> = ({
                href="#"
               className="w-[184px] flex gap-2.5 items-center justify-center bg-[#CA1F34] text-white rounded-full text-xs leading-[18px] py-4"   >
                 {buttonTitle}
-                <img src="/images/play-store.png" alt="img" />
-                <img src="/images/dwn-app-store.png" alt="img2" />
+                <img src="/images/play-store.png" loading="lazy" alt="img" />
+                <img src="/images/dwn-app-store.png" loading="lazy" alt="img2" />
               </a>
             </div>
           </div>
 
           <div className="animate-custom-bounce place-items-center order-2">
-            <img src="/images/abg_discover_download_img.png" alt="img3" />
+            <img src="/images/abg_discover_download_img.png" loading="lazy" alt="img3" />
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import CryptoJS from "crypto-js";
 import { decryptData } from "@/utils/decryption";
+import { saveToDB } from "@/lib/savedb";
 export async function POST(request: Request) {
     try {
         const body = await request.json();
@@ -19,7 +20,6 @@ export async function POST(request: Request) {
             browserName,
             GAClient_Idc
         } = decryptedExpertData;
-        console.log("Received lead data:", decryptedExpertData);
         const key = CryptoJS.enc.Utf8.parse(`${process.env.NEXT_PUBLIC_PUSH_LEAD_KEY}`);
         const iv = CryptoJS.enc.Utf8.parse(`${process.env.NEXT_PUBLIC_PUSH_LEAD_IV}`);
         // Prepare the lead request JSON data
@@ -113,6 +113,12 @@ export async function POST(request: Request) {
         });
         if (!pushLeadData.ok) {
             const resp = await pushLeadData.json();
+            await saveToDB(
+                decryptedExpertData,
+                false,
+                JSON.stringify(resp),
+                null
+            );
             return NextResponse.json(
                 {
                     error: "Unable to add data",
@@ -124,6 +130,20 @@ export async function POST(request: Request) {
         }
 
         const leadResponse = await pushLeadData.json();
+        const sfLeadId = leadResponse?.compositeResponse?.[0]?.body?.id || null;
+        if(sfLeadId){
+             await saveToDB(decryptedExpertData, true, null, sfLeadId);
+              return NextResponse.json(
+            {
+                success: true,
+                message: "Lead created successfully",
+                data: leadResponse,
+            },
+            { status: 200 },
+        );
+        }
+        const errorMessage = leadResponse?.compositeResponse?.[0]?.body[0]?.message || "Unknown error";
+         await saveToDB(decryptedExpertData, false, errorMessage, null);
         return NextResponse.json(
             {
                 success: true,
@@ -133,6 +153,7 @@ export async function POST(request: Request) {
             { status: 200 },
         );
     } catch (error) {
+         await saveToDB(null, false, String(error), null);
         return NextResponse.json(
             { error: error || "An unexpected error occurred" },
             { status: 500 },

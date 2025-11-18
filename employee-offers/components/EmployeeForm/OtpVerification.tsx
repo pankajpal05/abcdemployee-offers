@@ -54,23 +54,14 @@ const OtpVerification = ({ formData }: { formData: any }) => {
         const fullOtp = otp.join("");
       const response =  await validateOTPService(fullOtp, formData.mobileNumber)
     if (response.data?.Error) {
-        //Invalid OTP. Please input correct OTP.
      setOtpMessage("Invalid OTP. Please input correct OTP.");
      } else if (response.data?.message === "Valid OTP") {
      const payload = createPayload(formData);
       setIsOtpVerified(true);
       const encryptPayload = encryptData(payload);
-     const res =  await createLeadService(encryptPayload);
-     console.log("Lead creation response:", res);
-      const sfResponse = res?.data?.compositeResponse?.[0];
-    const leadBody = sfResponse?.body;
-    if (leadBody?.success === true) {
-      console.log("Lead stored successfully:", leadBody.id);
-        sessionStorage.setItem("thankyouToken", Date.now().toString());
-      router.push("/campaign/addvantage-employee-offers/thank-you");
-    }else{
-        setOtpMessage("Failed to create lead. Please try again.");
-    }
+      await createLeadService(encryptPayload);
+   sessionStorage.setItem("thankyouToken", Date.now().toString());
+      router.push("/campaign/addvantage-employee-offers/thankyou");
     }
     };
 

@@ -14,7 +14,7 @@ const AccordianBody = ({title,subTitle,description,imageLink}:AccordianBodyProps
 <p className="leading-4 text-xs font-medium opacity-80">{subTitle}</p>
 <p className="leading-4 text-xs font-medium opacity-80"> {description}</p>
 
-{imageLink &&<img src={imageLink} alt="img" />}
+{imageLink &&<img src={imageLink}  loading="lazy" alt="img" />}
    </div>
    
   )
