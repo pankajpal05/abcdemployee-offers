@@ -23,7 +23,7 @@ const Discover: React.FC<DiscoverProps> = ({
         <div className="grid grid-cols-2 place-items-center">
           <div className={`${imageAlignment === "left" ? "order-1" : ""}`}>
             <div>
-              <h2 className="text-left mb-4 text-[35px] leading-10 xl:text-[44px] xl:leading-12 text-[#1f1f1f] xl:w-[90%] font-semibold">
+              <h2 className="text-left mb-4 text-[35px] leading-10 xl:text-[44px] xl:leading-12 text-charcoal-200 xl:w-[90%] font-semibold">
                 {title}
               </h2>
               <p className="text-sm xl:text-base leading-4 font-semibold text-[#333333cc] w-[63%]">{subTitle}</p>
@@ -63,7 +63,7 @@ const Discover: React.FC<DiscoverProps> = ({
       <div className="lg:hidden">
         <div className="flex flex-col items-center gap-[30px] justify-center">
           <div className="order-1 text-center px-2.5">
-            <h2 className="text-center mb-4 text-5xl text-[#1f1f1f]  font-medium">
+            <h2 className="text-center mb-4 text-5xl text-charcoal-200 font-medium">
               {title}
             </h2>
             <p className="text-xs font-semibold text-[#333333cc]">{subTitle}</p>
