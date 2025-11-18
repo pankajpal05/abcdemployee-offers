@@ -13,11 +13,13 @@ const Card = ({ title, subTitle, bgDesktopImage, bgMobileImage, width }: cardPro
       <img
         src={bgMobileImage}
         className="rounded-xl w-full h-full object-fill md:hidden"
+        loading="lazy"
       />
 
       {/* Desktop Image */}
       <img
         src={bgDesktopImage}
+         loading="lazy"
         className="rounded-3xl w-full h-full object-fill hidden md:block"
       />
       <div className="absolute top-0 left-0 w-full h-full p-5 xl:p-[30px]">

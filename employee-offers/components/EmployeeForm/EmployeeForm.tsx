@@ -1,5 +1,5 @@
 "use client"
-import {   useState } from 'react';
+import {   use, useEffect, useState } from 'react';
 import { LayoutGrid, User, Mail, Building, MapPin, Smartphone, } from 'lucide-react';
 import FormField from '../FormField/FormField';
 import CheckboxItem from '../CheckBoxItem/CheckBoxItem';
@@ -35,6 +35,10 @@ const EmployeeForm = () => {
  const [isFormTouched, setIsFormTouched] = useState(false);
 const [showOtpScreen, setShowOtpScreen] = useState(false);
 
+useEffect(() => { 
+sessionStorage.removeItem("thankyouToken");
+}, []);
+
   const handleInputChange = (
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
 ) => {
@@ -44,8 +48,6 @@ setIsFormTouched(true);
     ...formData,
     [name]: value,
   };
-  console.log("Updated form data:", updatedData);
-
   setFormData(updatedData);
   const validationMessage = validateForm(updatedData);
   setError(validationMessage);
@@ -66,7 +68,6 @@ const handleSubmit = async (e: React.FormEvent) => {
     const validationMessage = validateForm(formData);
     setError(validationMessage);
     if (validationMessage === "") {
-      console.log("Form Submitted Successfully: ", formData);
       setShowOtpScreen(true);
        await generateOTPService(formData.mobileNumber)
     }

@@ -11,7 +11,6 @@ export const generateUserToken = async () => {
       },
     });
     if (!response.ok) {
-        console.log(response,"error fetching token");
         return;
     }
     const data = await response.json();
